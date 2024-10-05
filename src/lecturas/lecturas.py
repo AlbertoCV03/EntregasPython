@@ -52,6 +52,7 @@ def longitud_promedio_lineas(file_path: str) -> Optional[float]:
                 
                 if i==0:
                     res=0
+                    res=res+longitud
                 else:
                     res=res+longitud
                 
@@ -62,4 +63,3 @@ def longitud_promedio_lineas(file_path: str) -> Optional[float]:
             return resfinal/nl
         else:
             return None
-       
