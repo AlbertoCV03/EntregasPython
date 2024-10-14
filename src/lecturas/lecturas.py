@@ -40,9 +40,9 @@ def funcion8(fichero:str)->list:
 
 def longitud_promedio_lineas(file_path: str) -> Optional[float]:
     with open(file_path, encoding='UTF-8') as f:
-        nl=0
-        res=0
-        resfinal=0
+        nl:int=0
+        res:int=0
+        resfinal:float=0
         for linea in f:
             nl+=1
             linea_separada=linea.strip().split(',')

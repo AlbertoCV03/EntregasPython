@@ -39,7 +39,7 @@ def combinatorio(n:int,k:int)->int:
     
     return res
 
-def numeroS(n:int,k:int)->int:
+def numeroS(n:int,k:int)->float:
     assert n>=k , 'n debe ser mayor o igual que k'
     res=0
     for i in range (0,k):
@@ -47,7 +47,7 @@ def numeroS(n:int,k:int)->int:
     
     return (1/factorial(k))*res
 
-def funcion5(f:Callable[[int],int],fd:Callable[[int],int],a:float,e:float)->float:
+def funcion5(f:Callable[[float],float],fd:Callable[[float],float],a:float,e:float)->float:
     
     while abs(f(a))>e:
     

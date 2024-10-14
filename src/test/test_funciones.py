@@ -16,10 +16,10 @@ def test_secuencia_geo(a1:int,r:int,k:int)->int:
 def test_combinatorio(n:int,k:int)->int:
     return funciones.combinatorio(n, k)
 
-def test_numeroS(n:int,k:int)->int:
+def test_numeroS(n:int,k:int)->float:
     return funciones.numeroS(n, k)
 
-def test_funcion5(f:Callable[[int],int],fd:Callable[[int],int],a:float,e:float)->float:
+def test_funcion5(f:Callable[[float],float],fd:Callable[[float],float],a:float,e:float)->float:
     return funciones.funcion5(f, fd, a, e)
 
 if __name__ == '__main__':
