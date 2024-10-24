@@ -41,8 +41,8 @@ if __name__ == '__main__':
     print('___________________________________________')
     
     '''Test 3'''
-    n=4
-    k=2
+    n=5
+    k=4
     print('Test 3 \n')
     print(f'El nuero combinatorio de {n} y {k} es: ' + str(test_combinatorio(n, k)))
     print('___________________________________________')
