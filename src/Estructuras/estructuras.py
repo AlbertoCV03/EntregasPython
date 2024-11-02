@@ -116,6 +116,9 @@ class Lista_ordenada(Agregado_lineal[E], Generic[E, R]):
         
         self._elements.insert(self._index_order(e),e)
         
+    def __str__(self) -> str:
+        return f'ListaOrdenada({self._elements})'
+        
 
 
 class Lista_ordenada_sin_repeticion(Lista_ordenada[E, R], Generic[E, R]):
@@ -127,6 +130,9 @@ class Lista_ordenada_sin_repeticion(Lista_ordenada[E, R], Generic[E, R]):
         """
         if e not in self._elements:
             self._elements.insert(self._index_order(e),e)
+            
+    def __str__(self) -> str:
+        return f'ListaOrdenadaSinRepeticion({self._elements})'
 
 
 
@@ -149,6 +155,9 @@ class Cola(Agregado_lineal[E]):
         """
         
         self._elements.append(e)
+        
+    def __str__(self) -> str:
+        return f'Cola({self._elements})'
 
 
 
@@ -250,6 +259,16 @@ class Cola_prioridad(Generic[E, P]):
             
         else:
             raise ValueError(f"El elemento {e} no se encuentra en la cola de prioridad")
+        
+        
+    def __str__(self) -> str:
+        
+        
+        ls:list[tuple[E,P]]=[]
+        for i in range(0,len(self._elements)):
+            ls.append((self._elements[i],self._priorities[i]))
+            
+        return f'ColaPrioridad({ls})'
             
 
 
@@ -272,7 +291,9 @@ class Pila(Agregado_lineal[E]):
     def add(self,e:E) -> None:
         
         self._elements.insert(0,e)
-    
+        
+    def __str__(self) -> str:
+        return f'Pila ({self._elements})'
     
     
 

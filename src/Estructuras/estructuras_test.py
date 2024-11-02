@@ -171,8 +171,7 @@ if __name__ == '__main__':
     print(f'Método: add("Paciente B", 2) -> Estado actual de la cola: '+ str(cola_prioridad.elements())+ '\n')
     
     cola_prioridad.decrease_priority("Paciente B", 0)
-    print(f'Método: decrease_priority("Paciente B", 0) -> Estado actual de la cola: '+ str(cola_prioridad.elements())+ '\n')
-    
+    print(f'Método: decrease_priority("Paciente B", 0) -> Estado actual de la cola: '+ str(cola_prioridad.elements())+ '\n') 
     
     # cola_prioridad.decrease_priority("Paciente B", 4)
     # print(f'Método: decrease_priority("Paciente B", 4) -> Estado actual de la cola: '+ str(cola_prioridad.elements())+ '\n')
@@ -215,6 +214,9 @@ if __name__ == '__main__':
     print("Método: remove_all() -> Elemento eliminado: " + str(pila.remove_all())+ '\n')
     
     print("------------------------------------------------\n")
+    
+
+
     
     
     
