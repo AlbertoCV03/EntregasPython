@@ -5,56 +5,66 @@ Created on 31 oct 2024
 '''
 from Estructuras.estructuras import Lista_ordenada, Lista_ordenada_sin_repeticion, Cola, Cola_prioridad,Pila
 
-if __name__ == '__main__':
-    print("------------------------------------------------")
-    print()
-    print("TEST DE LISTA ORDENADA")
-    print()
-    print("------------------------------------------------")
-    print()
-    print("Objetivo: La Lista Ordenada mantiene los elementos en un orden específico, definido por un criterio. En este caso, se ordena de menor a mayor.")
-    print()
-    print("------------------------------------------------")
-    print("Elementos a agregar: [3, 1, 3, 2] \n")
+def test_lista_ordenada():
+        print("------------------------------------------------")
+        print()
+        print("TEST DE LISTA ORDENADA")
+        print()
+        print("------------------------------------------------")
+        print()
+        print("Objetivo: La Lista Ordenada mantiene los elementos en un orden específico, definido por un criterio. En este caso, se ordena de menor a mayor.")
+        print()
+        print("------------------------------------------------")
+        print("Elementos a agregar: [3, 1, 3, 2] \n")
+        
+        lista:Lista_ordenada = Lista_ordenada(lambda x: x)
+        
+        a = 3
+        lista.add(a)
+        print(f'Método: add({a}) -> Estado actual de la lista: {lista.elements()}\n')
     
-    lista:Lista_ordenada = Lista_ordenada(lambda x: x)
+        a = 1
+        lista.add(a)
+        print(f'Método: add({a}) -> Estado actual de la lista: {lista.elements()}\n')
     
-    lista.add(3)
-    print(f'Método: add(3) -> Estado actual de la lista: '+ str(lista.elements())+ '\n')
+        a = 3
+        lista.add(a)
+        print(f'Método: add({a}) -> Estado actual de la lista: {lista.elements()}\n')
     
-    lista.add(1)
-    print(f'Método: add(1) -> Estado actual de la lista: '+ str(lista.elements())+ '\n')
+        a = 2
+        lista.add(a)
+        print(f'Método: add({a}) -> Estado actual de la lista: {lista.elements()}\n')
     
-    lista.add(3)
-    print(f'Método: add(3) -> Estado actual de la lista: '+ str(lista.elements())+ '\n')
+        
+        print(f'Resultado de la lista: {lista.elements()} \n')
+        
+        print(f'Método: elements() -> La lista está ordenada correctamente: {lista.elements()} \n')
+        
+        
+        print(f'Representación como cadena: {lista}\n')
+        
+        
+        print(f'Método: remove() -> Elemento eliminado: {lista.remove()} \n')
+        
+        print(f'Método: remove_all() -> Elementos eliminados: {lista.remove_all()} \n')
+        
+        a = 0
+        lista.add(a)
+        print(f'Método: add({a}) -> Estado actual de la lista: {lista.elements()}\n')
     
-    lista.add(2)
-    print(f'Método: add(2) -> Estado actual de la lista: '+ str(lista.elements())+ '\n')
+        a = 10
+        lista.add(a)
+        print(f'Método: add({a}) -> Estado actual de la lista: {lista.elements()}\n')
     
-    print("Resultado de la lista: "+ str(lista.elements())+ '\n')
+        a = 7
+        lista.add(a)
+        print(f'Método: add({a}) -> Estado actual de la lista: {lista.elements()}\n')
     
-    print(f'Método: elements() -> La lista está ordenada correctamente: ' +str(lista.elements()) + '\n')
+        print(f'Método: size() -> Tamaño de la lista es el esperado: {lista.size()}\n')
     
-    
-    print("Método: remove() -> Elemento eliminado: " + str(lista.remove())+ '\n')
-    
-    print("Método: remove_all() -> Elementos eliminados: "+ str(lista.remove_all())+ '\n')
-    
-    lista.add(0)
-    print(f'Método: add(0) -> Estado actual de la lista: '+ str(lista.elements())+ '\n')
-    
-    lista.add(10)
-    print(f'Método: add(10) -> Estado actual de la lista: '+ str(lista.elements())+ '\n')
-    
-    lista.add(7)
-    print(f'Método: add(7) -> Estado actual de la lista: '+ str(lista.elements())+ '\n')
-    
-    print(f'Método: size() -> Tamaño de la lista es el esperado: ' +str(lista.size())+ '\n')
-    
-    print("------------------------------------------------\n")
-    
-    
-    
+        print("------------------------------------------------\n")
+        
+def test_lista_ordenada_sin_repeticion():
     
     print("------------------------------------------------")
     print()
@@ -71,42 +81,56 @@ if __name__ == '__main__':
     
     lista_ordenada:Lista_ordenada_sin_repeticion = Lista_ordenada_sin_repeticion(lambda x: -x)
     
-    lista_ordenada.add(23)
-    print(f'Método: add(23) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
+    a = 23
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
+
+    a = 47
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
+
+    a = 47
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
+
+    a = 1
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
+
+    a = 2
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
+
+    a = -3
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
+
+    a = 4
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
+
+    a = 5
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
     
-    lista_ordenada.add(47)
-    print(f'Método: add(47) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
+    print(f'Representación como cadena: {lista_ordenada}\n')
     
-    lista_ordenada.add(47)
-    print(f'Método: add(47) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
+    print(f'Método: remove() -> Elemento eliminado: {lista_ordenada.remove()} \n')
     
-    lista_ordenada.add(1)
-    print(f'Método: add(1) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
+    print(f'Método: remove_all() -> Elementos eliminados: {lista_ordenada.remove_all()}\n')
     
-    lista_ordenada.add(2)
-    print(f'Método: add(2) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
+    a = 0
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
     
-    lista_ordenada.add(-3)
-    print(f'Método: add(-3) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
-    
-    lista_ordenada.add(4)
-    print(f'Método: add(4) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
-    
-    lista_ordenada.add(5)
-    print(f'Método: add(5) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
-    
-    print("Método: remove() -> Elemento eliminado: " + str(lista_ordenada.remove())+ '\n')
-    
-    print("Método: remove_all() -> Elemento eliminado: " + str(lista_ordenada.remove_all())+ '\n')
-    
-    lista_ordenada.add(0)
-    print(f'Método: add(0) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
-    
-    lista_ordenada.add(7)
-    print(f'Método: add(7) -> Estado actual de la lista: '+ str(lista_ordenada.elements())+ '\n')
+    a = 7
+    lista_ordenada.add(a)
+    print(f'Método: add({a}) -> Estado actual de la lista: {lista_ordenada.elements()}\n')
     
     print("------------------------------------------------\n")
     
+    
+def test_cola():
     
     print("------------------------------------------------")
     print()
@@ -121,32 +145,41 @@ if __name__ == '__main__':
     
     cola:Cola = Cola.of()
     
-    cola.add(23)
-    print(f'Método: add(23) -> Estado actual de la cola: '+ str(cola.elements())+ '\n')
+    a = 23
+    cola.add(a)
+    print(f'Método: add({a}) -> Estado actual de la cola: {cola.elements()}\n')
+
+    a = 47
+    cola.add(a)
+    print(f'Método: add({a}) -> Estado actual de la cola: {cola.elements()}\n')
+
+    a = 1
+    cola.add(a)
+    print(f'Método: add({a}) -> Estado actual de la cola: {cola.elements()}\n')
+
+    a = 2
+    cola.add(a)
+    print(f'Método: add({a}) -> Estado actual de la cola: {cola.elements()}\n')
+
+    a = -3
+    cola.add(a)
+    print(f'Método: add({a}) -> Estado actual de la cola: {cola.elements()}\n')
+
+    a = 4
+    cola.add(a)
+    print(f'Método: add({a}) -> Estado actual de la cola: {cola.elements()}\n')
+
+    a = 5
+    cola.add(a)
+    print(f'Método: add({a}) -> Estado actual de la cola: {cola.elements()}\n')
     
-    cola.add(47)
-    print(f'Método: add(47) -> Estado actual de la cola: '+ str(cola.elements())+ '\n')
+    print(f'Representación como cadena: {cola}\n')
     
-    cola.add(1)
-    print(f'Método: add(1) -> Estado actual de la cola: '+ str(cola.elements())+ '\n')
-    
-    cola.add(2)
-    print(f'Método: add(2) -> Estado actual de la cola: '+ str(cola.elements())+ '\n')
-    
-    cola.add(-3)
-    print(f'Método: add(-3) -> Estado actual de la cola: '+ str(cola.elements())+ '\n')
-    
-    cola.add(4)
-    print(f'Método: add(4) -> Estado actual de la cola: '+ str(cola.elements())+ '\n')
-    
-    cola.add(5)
-    print(f'Método: add(5) -> Estado actual de la cola: '+ str(cola.elements())+ '\n')
-    
-    print("Método: remove_all() -> Elemento eliminado: " + str(cola.remove_all())+ '\n')
+    print(f'"Método: remove_all() -> Elemento eliminado: {cola.remove_all()}\n')
     
     print("------------------------------------------------\n")
     
-    
+def test_cola_prioridad():
     
     print("------------------------------------------------")
     print()
@@ -170,21 +203,29 @@ if __name__ == '__main__':
     cola_prioridad.add("Paciente B", 2)
     print(f'Método: add("Paciente B", 2) -> Estado actual de la cola: '+ str(cola_prioridad.elements())+ '\n')
     
+    print(f'Representación como cadena: {cola_prioridad}\n')
+    
     cola_prioridad.decrease_priority("Paciente B", 0)
     print(f'Método: decrease_priority("Paciente B", 0) -> Estado actual de la cola: '+ str(cola_prioridad.elements())+ '\n') 
     
-    # cola_prioridad.decrease_priority("Paciente B", 4)
-    # print(f'Método: decrease_priority("Paciente B", 4) -> Estado actual de la cola: '+ str(cola_prioridad.elements())+ '\n')
+    try:
+        cola_prioridad.decrease_priority("Paciente B", 4)
+    except Exception as e:
+        print(f'Error: {e}\n')
+        
+        
+    print(f'Método: decrease_priority("Paciente B", 4) -> Estado actual de la cola: '+ str(cola_prioridad.elements())+ '\n')
     
-    print("Método: remove() -> Paciente atendido: " + str(cola_prioridad.remove())+ '\n')
+    print(f'Método: remove() -> Paciente atendido: {cola_prioridad.remove()}\n')
     
-    print("Método: remove() -> Paciente atendido: " + str(cola_prioridad.remove())+ '\n')
+    print(f'Método: remove() -> Paciente atendido: {cola_prioridad.remove()}\n')
     
-    print("Método: remove() -> Paciente atendido: " + str(cola_prioridad.remove())+ '\n')
+    print(f'Método: remove() -> Paciente atendido: {cola_prioridad.remove()}\n')
     
     print("------------------------------------------------\n")
     
     
+def test_pila():
     
     print("------------------------------------------------")
     print()
@@ -200,18 +241,23 @@ if __name__ == '__main__':
     
     pila:Pila = Pila()
     
-    pila.add(1)
-    print(f'Método: add(1) -> Estado actual de la cola: '+ str(pila.elements())+ '\n')
+    a = 1
+    pila.add(a)
+    print(f'Método: add({a}) -> Estado actual de la pila: {pila.elements()}\n')
+
+    a = 2
+    pila.add(a)
+    print(f'Método: add({a}) -> Estado actual de la pila: {pila.elements()}\n')
+
+    a = 3
+    pila.add(a)
+    print(f'Método: add({a}) -> Estado actual de la pila: {pila.elements()}\n')
     
-    pila.add(2)
-    print(f'Método: add(1) -> Estado actual de la cola: '+ str(pila.elements())+ '\n')
+    print(f'Representación como cadena: {pila}\n')
     
-    pila.add(3)
-    print(f'Método: add(1) -> Estado actual de la cola: '+ str(pila.elements())+ '\n')
+    print(f'Método: remove() -> Elemento eliminado: {pila.remove()}\n')
     
-    print("Método: remove() -> Elemento eliminado: " + str(pila.remove())+ '\n')
-    
-    print("Método: remove_all() -> Elemento eliminado: " + str(pila.remove_all())+ '\n')
+    print(f'Método: remove_all() -> Elementos eliminados: {pila.remove_all()}\n')
     
     print("------------------------------------------------\n")
     
@@ -219,6 +265,27 @@ if __name__ == '__main__':
 
     
     
+    
+
+if __name__ == '__main__':
+    
+    test_lista_ordenada()
+    test_lista_ordenada_sin_repeticion()
+    test_cola()
+    test_cola_prioridad()
+    test_pila()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+   
     
     
     # lista:Lista_ordenada = Lista_ordenada(lambda x: x)

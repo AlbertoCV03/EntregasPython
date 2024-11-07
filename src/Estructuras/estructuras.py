@@ -1,9 +1,10 @@
 from typing import List, TypeVar, Generic, Callable, Tuple
 from abc import ABC, abstractmethod
+#from mypy.typeshed.stdlib._typeshed import SupportsAllComparisons
 
 # Tipos genéricos
 E = TypeVar('E')
-R = TypeVar('R')
+R = TypeVar('R') #,SupportsAllComparisons
 P = TypeVar('P')
 
 class Agregado_lineal(ABC, Generic[E]):
@@ -253,9 +254,13 @@ class Cola_prioridad(Generic[E, P]):
         """
         if e in self._elements:
             indice:int= self._elements.index(e)
-            self._priorities.pop(indice)
-            self._elements.pop(indice)
-            self.add(e, new_priority)
+            if new_priority<self._priorities[indice]:
+                self._priorities.pop(indice)
+                self._elements.pop(indice)
+                self.add(e, new_priority)
+                
+            else:
+                raise ValueError(f"La nueva prioridad con un valor de {new_priority}, no es menor que la anterior")
             
         else:
             raise ValueError(f"El elemento {e} no se encuentra en la cola de prioridad")
