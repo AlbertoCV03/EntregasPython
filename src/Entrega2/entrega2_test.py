@@ -3,7 +3,7 @@ Created on 31 oct 2024
 
 @author: Alberto CV
 '''
-from Estructuras.estructuras import Lista_ordenada, Lista_ordenada_sin_repeticion, Cola, Cola_prioridad,Pila
+from Entrega2.entrega2 import Lista_ordenada, Lista_ordenada_sin_repeticion, Cola, Cola_prioridad,Pila
 
 def test_lista_ordenada():
         print("------------------------------------------------")

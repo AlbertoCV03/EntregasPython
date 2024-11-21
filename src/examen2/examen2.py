@@ -5,7 +5,7 @@ Created on 21 nov 2024
 '''
 
 from __future__ import annotations
-from Estructuras.estructuras import Lista_ordenada, Lista_ordenada_sin_repeticion, Cola, Cola_prioridad,Pila,\
+from Entrega2.entrega2 import Lista_ordenada, Lista_ordenada_sin_repeticion, Cola, Cola_prioridad,Pila,\
     Agregado_lineal
     
 from typing import List, TypeVar, Generic, Callable, Tuple, Optional
