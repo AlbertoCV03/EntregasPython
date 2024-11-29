@@ -74,8 +74,6 @@ class Grafo(Generic[V, E]):
         :return: Conjunto de predecesores.
         """
         
-        final={}
-        
         final=set()
         for x,y in list(self.adyacencias.items()):
             for i in y.keys():
@@ -140,9 +138,46 @@ class Grafo(Generic[V, E]):
         """
         
         nuevo_grafo=Grafo(self.es_dirigido)
-        for x in vertices:
-            nuevo_grafo.add_vertex(x)
-        return nuevo_grafo  
+        #
+        # for x in vertices:
+        #     for i in self.adyacencias.keys():
+        #         if x==i:
+        #             nuevo_grafo.adyacencias[x]=self.adyacencias[x]       
+        #
+        # return nuevo_grafo
+        
+
+        
+        for clave in vertices:
+            for i in self.adyacencias.keys():
+                if clave==i:
+                    asociaciones_filtradas = {vecino: peso for vecino, peso in self.adyacencias[clave].items() if vecino in vertices}
+                    nuevo_grafo.adyacencias[clave] = asociaciones_filtradas     
+        
+        return nuevo_grafo
+    
+        
+        # asociaciones_filtradas={}
+        # for x in vertices:
+        #     for i in self.adyacencias.keys():
+        #         if x==i:
+        #             for vecino,peso in self.adyacencias[x].items():
+        #                 if vecino in vertices:
+        #                     asociaciones_filtradas[vecino]=peso
+        #                     nuevo_grafo.adyacencias[x] = asociaciones_filtradas 
+        # return nuevo_grafo
+                            
+        
+        
+        
+       
+        
+#        for x in vertices:
+#                if x in self.adyacencias:
+#                    asociaciones_filtradas = {vecino: peso for vecino, peso in self.adyacencias[x].items() if vecino in vertices}
+#                    nuevo_grafo.adyacencias[x] = asociaciones_filtradas
+#         
+#        return nuevo_grafo
 
     def inverse_graph(self) -> Grafo[V, E]:
         """
@@ -151,7 +186,18 @@ class Grafo(Generic[V, E]):
         :return: Grafo inverso.
         :raise ValueError: Si el grafo no es dirigido.
         """
-        pass
+        
+        nuevo_grafo=Grafo(self.es_dirigido)
+        
+        for clave in self.adyacencias.keys():
+            nuevo_grafo.add_vertex(clave)
+            for x,y in self.adyacencias[clave].items():
+                nuevo_grafo.add_vertex(x)
+                nuevo_grafo.add_edge(x,clave,y)
+                
+                
+        
+        return nuevo_grafo
 
     def draw(self, titulo: str = "Grafo", 
             lambda_vertice: Callable[[V], str] = str, 
@@ -221,21 +267,30 @@ if __name__ == '__main__':
     grafo.add_edge("A", "B", 5)
     grafo.add_edge("A", "C", 8)
     grafo.add_edge("B", "C", 3)
-    grafo.add_edge("D", "B", 1)
+    #grafo.add_edge("D", "B", 1)
     
     print(grafo)
+    print("__________________________________")
     
-    print(grafo.successors("A"))
-    print(grafo.predecessors("B"))
+#    print(grafo.successors("A"))
+#    print(grafo.predecessors("B"))
+#    
+#    print(grafo.edge_weight("A", "B"))
+#    print(grafo.vertices())
+#    print(grafo.edge_exists("A", "B"))
+#    print(grafo.edge_exists("A", "D"))
+#    
+#    b=grafo.subgraph({"A","B"})
+#    print(b)
     
-    print(grafo.edge_weight("A", "B"))
-    print(grafo.vertices())
-    print(grafo.edge_exists("A", "B"))
-    print(grafo.edge_exists("A", "D"))
+    a=grafo.inverse_graph()
+    print(a)
     
-    print(grafo.subgraph({"A","B"}))
+    
     
     # Dibujar el grafo
-    #grafo.draw(titulo="Mi Grafo Dirigido")
+    grafo.draw(titulo="Mi Grafo Dirigido")
+    a.draw(titulo="Mi Grafo Inverso")
+    #b.draw(titulo="Mi Grafo Dirigido")
     
     #grafo.inverse_graph().draw(titulo="Inverso del Grafo Dirigido")
