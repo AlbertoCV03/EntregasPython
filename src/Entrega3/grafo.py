@@ -192,7 +192,8 @@ class Grafo(Generic[V, E]):
         for clave in self.adyacencias.keys():
             nuevo_grafo.add_vertex(clave)
             for x,y in self.adyacencias[clave].items():
-                nuevo_grafo.add_vertex(x)
+                if x not in nuevo_grafo.adyacencias.keys():
+                    nuevo_grafo.add_vertex(x)
                 nuevo_grafo.add_edge(x,clave,y)
                 
                 
@@ -267,7 +268,7 @@ if __name__ == '__main__':
     grafo.add_edge("A", "B", 5)
     grafo.add_edge("A", "C", 8)
     grafo.add_edge("B", "C", 3)
-    #grafo.add_edge("D", "B", 1)
+    grafo.add_edge("D", "B", 1)
     
     print(grafo)
     print("__________________________________")
