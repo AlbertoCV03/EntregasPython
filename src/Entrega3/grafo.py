@@ -63,7 +63,7 @@ class Grafo(Generic[V, E]):
         :param vertice: Vértice del que se buscan los sucesores.
         :return: Conjunto de sucesores.
         """
-        valores={x for x in self.adyacencias.get(vertice)}
+        valores:Set[V]={x for x in self.adyacencias.get(vertice)}
         
         return valores
     def predecessors(self, vertice: V) -> Set[V]:
@@ -74,7 +74,7 @@ class Grafo(Generic[V, E]):
         :return: Conjunto de predecesores.
         """
         
-        final=set()
+        final:Set[V]=set()
         for x,y in list(self.adyacencias.items()):
             for i in y.keys():
                 if x!=vertice and i==vertice:
@@ -105,7 +105,7 @@ class Grafo(Generic[V, E]):
         
         :return: Conjunto de vértices.
         """
-        final=set()
+        final:Set[V]=set()
         for x,_ in list(self.adyacencias.items()):
             final.add(x)
         return final
@@ -118,7 +118,7 @@ class Grafo(Generic[V, E]):
         :param destino: Vértice de destino.
         :return: True si existe la arista, False en caso contrario.
         """
-        a=True 
+        a:bool=True 
         
         try:
             self.adyacencias[origen][destino]
@@ -137,7 +137,7 @@ class Grafo(Generic[V, E]):
         :return: Nuevo grafo con los vértices y aristas correspondientes.
         """
         
-        nuevo_grafo=Grafo(self.es_dirigido)
+        nuevo_grafo:Grafo=Grafo(self.es_dirigido)
         #
         # for x in vertices:
         #     for i in self.adyacencias.keys():
@@ -151,7 +151,7 @@ class Grafo(Generic[V, E]):
         for clave in vertices:
             for i in self.adyacencias.keys():
                 if clave==i:
-                    asociaciones_filtradas = {vecino: peso for vecino, peso in self.adyacencias[clave].items() if vecino in vertices}
+                    asociaciones_filtradas:dict[V,E] = {vecino: peso for vecino, peso in self.adyacencias[clave].items() if vecino in vertices}
                     nuevo_grafo.adyacencias[clave] = asociaciones_filtradas     
         
         return nuevo_grafo
@@ -187,7 +187,7 @@ class Grafo(Generic[V, E]):
         :raise ValueError: Si el grafo no es dirigido.
         """
         
-        nuevo_grafo=Grafo(self.es_dirigido)
+        nuevo_grafo:Grafo=Grafo(self.es_dirigido)
         
         for clave in self.adyacencias.keys():
             nuevo_grafo.add_vertex(clave)
@@ -246,12 +246,12 @@ class Grafo(Generic[V, E]):
         """
         lineas:list[str] = []
         for clave,valor in self.adyacencias.items():
-            destinos=[f'{k} ({v})' for k,v in valor.items()]
+            destinos:list[str]=[f'{k} ({v})' for k,v in valor.items()]
             destinos_str: str = ', '.join(destinos)
             lineas.append(f'{clave} -> {destinos_str}')
 
         
-        return "\t\n".join(lineas)
+        return "\n".join(lineas)
        
         
         
@@ -260,15 +260,19 @@ class Grafo(Generic[V, E]):
 
 if __name__ == '__main__':
     # Crear un grafo dirigido
-    grafo = Grafo.of(es_dirigido=True)
+    grafo:Grafo = Grafo.of(es_dirigido=True)
     grafo.add_vertex("A")
     grafo.add_vertex("B")
     grafo.add_vertex("C")
     grafo.add_vertex("D")
-    grafo.add_edge("A", "B", 5)
-    grafo.add_edge("A", "C", 8)
-    grafo.add_edge("B", "C", 3)
-    grafo.add_edge("D", "B", 1)
+    # grafo.add_edge("A", "B", 5)
+    # grafo.add_edge("A", "C", 8)
+    # grafo.add_edge("B", "C", 3)
+    # grafo.add_edge("D", "B", 1)
+    grafo.add_edge("B", "A", 5)
+    grafo.add_edge("C", "A", 8)
+    grafo.add_edge("C", "B", 3)
+    grafo.add_edge("B", "D", 1)
     
     print(grafo)
     print("__________________________________")
@@ -284,7 +288,7 @@ if __name__ == '__main__':
 #    b=grafo.subgraph({"A","B"})
 #    print(b)
     
-    a=grafo.inverse_graph()
+    a:Grafo=grafo.inverse_graph()
     print(a)
     
     
