@@ -147,9 +147,18 @@ def reconstruir_camino(predecesores: dict, destino: V) -> List[V]:
     
     while vertice_actual !=None:
         camino.insert(0, vertice_actual)
-        for x,y in predecesores.items():
-            if vertice_actual==x:
-                vertice_actual=y
+        
+        if vertice_actual in predecesores:
+            vertice_actual=predecesores[vertice_actual]
+            
+        else:
+            camino=[]
+            break
+        
+#        for x,y in predecesores.items():
+#            if vertice_actual==x:
+#                vertice_actual=y
+#        
     return camino
         
 if __name__ == '__main__':
@@ -157,6 +166,8 @@ if __name__ == '__main__':
     grafo.add_vertex("A")
     grafo.add_vertex("B")
     grafo.add_vertex("C")
+    grafo.add_vertex("D")
+    grafo.add_vertex("E")
     
     grafo.add_edge("A", "B", 5)
     grafo.add_edge("A", "C", 8)
@@ -164,4 +175,6 @@ if __name__ == '__main__':
     grafo.add_edge("C", "D", 1)
     
     print(bfs(grafo, "A", "D"))
+    print(bfs(grafo, "A", "A"))
+    print(bfs(grafo, "A", "E"))
     print(dfs(grafo, "A", "D"))
