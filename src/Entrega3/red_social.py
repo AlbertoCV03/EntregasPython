@@ -148,4 +148,11 @@ if __name__ == '__main__':
     
     g_camino.draw("caminos", lambda_vertice=lambda v: f"{v.dni}", lambda_arista=lambda e: e.id)
     
+    print("El camino más corto desde 25143909I hasta 76929765H es:")
+    camino = bfs(rrss, rrss.usuarios_dni['25143909I'], rrss.usuarios_dni['76929765H'])
+    print(camino)
+    g_camino = rrss.subgraph(camino)
+    
+    g_camino.draw("caminos", lambda_vertice=lambda v: f"{v.dni}", lambda_arista=lambda e: e.id)
+    
 
