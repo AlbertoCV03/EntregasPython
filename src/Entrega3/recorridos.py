@@ -125,10 +125,11 @@ def dfs(grafo: Grafo[V, E], inicio: V, destino: V) -> List[V]:
         if vertice not in visitados:
             visitados.add(vertice)
             for vecino in grafo.successors(vertice):
-            #for vecino in reversed(list(grafo.successors(vertice))):
+            #for vecino in list(grafo.successors(vertice))[::-1]:
                 if vecino not in visitados and vecino not in predecesores:
                     pila.add(vecino)
                     predecesores[vecino]=vertice
+                    
         
     
     return  reconstruir_camino(predecesores,destino)

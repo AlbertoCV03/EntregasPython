@@ -111,8 +111,8 @@ class Red_social(Grafo[Usuario, Relacion]):
                 red_social.usuarios_dni[usuario.dni] = usuario
                 red_social.add_vertex(usuario)
                 
-        with open(f2, 'r', encoding='utf-8') as file:
-            for linea in file:
+        with open(f2,encoding='utf-8') as f:
+            for linea in f:
                 dni_origen, dni_destino, interacciones, dias_activa = linea.strip().split(',')
                 if dni_origen not in red_social.usuarios_dni or dni_destino not in red_social.usuarios_dni:
                     raise ValueError(f"Uno de los usuarios en la relación ({dni_origen}, {dni_destino}) no existe.")
@@ -120,15 +120,13 @@ class Red_social(Grafo[Usuario, Relacion]):
                 usuario_destino = red_social.usuarios_dni[dni_destino]
                 relacion = Relacion.of(int(interacciones), int(dias_activa))
                 red_social.add_edge(usuario_origen, usuario_destino, relacion)
+                
 
         return red_social
 
         
     
 if __name__ == '__main__':
-    # a=date(2003,2,10)
-    #
-    # print(Usuario.of("29569486L","Alberto","Camino Vasco",a))
     # print(Usuario.parse('45718832U,Carlos,Lopez,1984-01-14'))
     #
     # print(Relacion.of(300, 6))
