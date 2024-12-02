@@ -96,7 +96,8 @@ class Grafo(Generic[V, E]):
         :param destino: Vértice de destino.
         :return: Peso de la arista, o None si no existe.
         """
-        
+        if not self.edge_exists(origen, destino):
+            return None
         return self.adyacencias[origen][destino]
 
     def vertices(self) -> Set[V]:
@@ -187,6 +188,9 @@ class Grafo(Generic[V, E]):
         :raise ValueError: Si el grafo no es dirigido.
         """
         
+        if not self.es_dirigido:
+            raise ValueError("El grafo debe ser dirigido para hacer el inverso")
+        
         nuevo_grafo:Grafo=Grafo(self.es_dirigido)
         
         for clave in self.adyacencias.keys():
@@ -274,7 +278,12 @@ if __name__ == '__main__':
     grafo.add_edge("C", "B", 3)
     grafo.add_edge("B", "D", 1)
     
+    
+    
     print(grafo)
+    print("__________________________________")
+    print(grafo.edge_weight("A", "B"))
+    print(grafo.edge_weight("B", "A"))
     print("__________________________________")
     
 #    print(grafo.successors("A"))
@@ -291,7 +300,15 @@ if __name__ == '__main__':
     a:Grafo=grafo.inverse_graph()
     print(a)
     
+    print("__________________________________")
     
+    grafo_no_dirigido=Grafo.of(es_dirigido=False)
+    
+    try:
+        grafo_no_dirigido.inverse_graph()
+        
+    except Exception as e:
+        print(e)
     
     # Dibujar el grafo
     grafo.draw(titulo="Mi Grafo Dirigido")

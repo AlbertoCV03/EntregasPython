@@ -117,6 +117,7 @@ def dfs(grafo: Grafo[V, E], inicio: V, destino: V) -> List[V]:
     pila.add(inicio)
     predecesores:dict[V,V]={}
     predecesores[inicio]=None
+   
     
     while not pila.is_empty():
         vertice=pila.remove()
@@ -125,7 +126,7 @@ def dfs(grafo: Grafo[V, E], inicio: V, destino: V) -> List[V]:
         if vertice not in visitados:
             visitados.add(vertice)
             for vecino in grafo.successors(vertice):
-            #for vecino in list(grafo.successors(vertice))[::-1]:
+            #for vecino in grafo.inverse_graph().successors(vertice):
                 if vecino not in visitados and vecino not in predecesores:
                     pila.add(vecino)
                     predecesores[vecino]=vertice
