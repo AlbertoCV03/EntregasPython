@@ -89,7 +89,7 @@ def bfs(grafo: Grafo[V, E], inicio: V, destino: V) -> List[V]:
     predecesores[inicio]=None
     
     while not cola.is_empty():
-        vertice=cola.remove()
+        vertice:V=cola.remove()
         if vertice==destino:
             break
         if vertice not in visitados:
@@ -120,13 +120,12 @@ def dfs(grafo: Grafo[V, E], inicio: V, destino: V) -> List[V]:
    
     
     while not pila.is_empty():
-        vertice=pila.remove()
+        vertice:V=pila.remove()
         if vertice==destino:
             break
         if vertice not in visitados:
             visitados.add(vertice)
             for vecino in grafo.successors(vertice):
-            #for vecino in grafo.inverse_graph().successors(vertice):
                 if vecino not in visitados and vecino not in predecesores:
                     pila.add(vecino)
                     predecesores[vecino]=vertice
@@ -149,6 +148,7 @@ def reconstruir_camino(predecesores: dict, destino: V) -> List[V]:
     
     while vertice_actual !=None:
         camino.insert(0, vertice_actual)
+        #camino.append(vertice_actual) #Devuelve lo mismo pero a la inversa
         
         if vertice_actual in predecesores:
             vertice_actual=predecesores[vertice_actual]
@@ -156,11 +156,7 @@ def reconstruir_camino(predecesores: dict, destino: V) -> List[V]:
         else:
             camino=[]
             break
-        
-#        for x,y in predecesores.items():
-#            if vertice_actual==x:
-#                vertice_actual=y
-#        
+             
     return camino
         
 if __name__ == '__main__':

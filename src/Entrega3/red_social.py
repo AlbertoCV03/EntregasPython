@@ -22,7 +22,7 @@ class Usuario:
         try:
             dni_numeros=int(dni[0:8])
             
-            letra_indice=dni_numeros%23
+            #letra_indice=dni_numeros%23
             
         except:
             dni_numeros=None
@@ -32,8 +32,8 @@ class Usuario:
         if dni[8:9].upper() not in letras_abc:
             raise Exception("El último dígito del DNI debe ser una letra")
             
-#        if dni_numeros==None:
-#            raise Exception("Los primeros 8 dígitos deben ser números")
+        if dni_numeros==None:
+            raise Exception("Los primeros 8 dígitos deben ser números")
 #        
 #        letras_dni:list[str]= ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E']
 #        
@@ -106,8 +106,6 @@ class Red_social(Grafo[Usuario, Relacion]):
         with open(f1,encoding='UTF-8') as f:
             for linea in f:
                 usuario=Usuario.parse(linea.strip())
-                # grafo:Grafo[Usuario,Relacion]=Grafo.of(es_dirigido=True)
-                # grafo.add_vertex(usuario)
                 red_social.usuarios_dni[usuario.dni] = usuario
                 red_social.add_vertex(usuario)
                 
@@ -128,12 +126,8 @@ class Red_social(Grafo[Usuario, Relacion]):
     
 if __name__ == '__main__':
     # print(Usuario.parse('45718832U,Carlos,Lopez,1984-01-14'))
-    #
-    # print(Relacion.of(300, 6))
-    # print(Relacion.of(309, 6))
-   
-    
-    
+    #print(Relacion.of(300, 6))
+    #print(Relacion.of(309, 8))
     
     raiz = '' # Cambia esta variable si ejecutas este script desde otro directorio
     rrss = Red_social.parse(raiz+'resources/usuarios.txt', raiz+'resources/relaciones.txt', es_dirigido=False)
